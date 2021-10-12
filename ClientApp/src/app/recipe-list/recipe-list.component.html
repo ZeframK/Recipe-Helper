@@ -1,0 +1,50 @@
+<div class='card'>
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+  <div class='col-md-2'>Search by Name:</div>
+  <div class='col-md-4'>
+    <input type='text'
+           [(ngModel)]='listFilter' />
+    <div>
+      <h4>Filtered by: {{listFilter}}</h4>
+    </div>
+  </div>
+
+  <div>
+    <table class="table" *ngIf="!!recipes">
+      <thead>
+      <tr>
+        <th>
+          <button class="btn btn-primary" type="button" (click)="create()">
+            New Recipe
+          </button>
+        </th>
+        <th>Recipe</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let r of recipes">
+        <td>{{r.name}} <br>{{r.summary}}</td>
+        <td>
+          Ingredients:
+          <div *ngFor="let ingredient of r.ingredients">
+            -{{ingredient.amount}}  {{ingredient.food}}
+          </div>
+
+          <button
+            class="btn btn-primary"
+            type="button"
+            (click)="edit(r.id)">
+            Edit
+          </button>
+          <br>
+          <button [style.background-color]="deleteConfirm ? 'red' : 'blue'"   class="btn btn-primary" type="button" (click)="delete(r.id)">
+            {{deleteText}}
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

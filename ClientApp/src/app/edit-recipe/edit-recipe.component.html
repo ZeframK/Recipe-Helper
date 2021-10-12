@@ -1,0 +1,41 @@
+<div class='card'>
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+  <div>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>
+          <button [style.background-color]="toggleSave ? 'green' : 'blue'"  class="btn btn-primary" (click)="saveRecipe()">
+            Save
+          </button>
+        </th>
+        <th>Recipe</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>
+          <input type="text" id="name" [(ngModel)]="recipe.name" placeholder="Name of Recipe">
+          <br>
+          <input type="text" [(ngModel)]="recipe.summary" placeholder="A brief description">
+        </td>
+        <td>
+          Ingredients: <button class="btn btn-primary" (click)="addIngredient()" style="">
+          +
+        </button>
+          <div *ngFor="let ingredient of recipe.ingredients">
+            <input type="text"  [(ngModel)]="ingredient.amount"  placeholder="amount" maxlength="3" style="width: 70px">
+            <input type="text" [(ngModel)]="ingredient.food" placeholder="food">
+            <button class="btn btn-primary" (click)="removeIngredient(ingredient)">
+              -
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

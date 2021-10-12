@@ -1,0 +1,35 @@
+<div class='card'>
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+  <div class='col-md-2'>Filter by:</div>
+  <div class='col-md-4'>
+    <input type='text'
+           [(ngModel)]='listFilter' />
+    <div>
+    <h4>Filtered by: {{listFilter}}</h4>
+    </div>
+  </div>
+  <div>
+    <table class="table" *ngIf="ingredients.length">
+      <thead>
+        <tr>
+          <th>
+            <button class="btn btn-primary">
+              Edit Ingredient
+            </button>
+          </th>
+          <th>Number</th>
+          <th>Food</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let ingredient of ingredients">
+        <td></td>
+        <td>{{ingredient.amount}}</td>
+        <td>{{ingredient.food}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
